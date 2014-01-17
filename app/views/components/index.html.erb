@@ -1,0 +1,6 @@
+<!-- <p><%=Component.count%></p> -->
+
+<% @components.each do |component| %>
+ <%= link_to(Component.name, component) %>
+<% end %>
+

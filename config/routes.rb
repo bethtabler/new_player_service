@@ -1,12 +1,24 @@
 NewPlayerService::Application.routes.draw do
+  resources :components
+  resources :user
+  resources :hulls
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root to: 'components#new'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'components/new' => 'components#new'
+  get 'components/index' => 'components#index'
+  get 'components/show' => 'components#show'
+
+  
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get "/auth/:provider/callback" => "sessions#create" 
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
